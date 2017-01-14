@@ -242,4 +242,45 @@ class content_ctrl extends CI_Controller {
 
 
     }
+
+		public function MostrarContenidoIndividual(){
+
+			if($this->session->userdata('is_logged_in'))
+			{
+		    	$data['id'] = $this->uri->segment(3);
+					$data['Conte'] = $this->content_model->obtenerContUpdate($data['id']);
+
+
+					$data['pregunta'] = $this->pregunta_model->BuscarporCatePreguntaM($data['Conte']->result()[0]->idcategoria);
+
+					$data['CalFil'] = $this->calificacion_model->obtenerCalificacionFilContenido($data['id']);
+
+					$data['sumacal'] = $this->calificacion_model->obtenerSumaCalificacion($data['id']);
+
+					$data['countcal'] = $this->calificacion_model->obtenerCountCalificacion($data['id']);
+
+					if ($data['countcal'] != 0) {
+
+						$data['resultadoCal'] = $data['sumacal'] / $data['countcal'];
+					}else
+					{
+						$data['resultadoCal'] = "no hay preguntas";
+					}
+
+
+
+					$data['iduser'] = $this->session->userdata('ci_session');
+
+
+						$this->load->model('content_model','b');
+
+						$this->load->model('User_model', 'u');
+						$this->load->model('categoria_model', 'c');
+					$this->load->view('Vista/MostContIndividual_view',$data);
+
+	    	}
+				else {
+					$this->load->view('Vista/NoLogeado_view');
+				}
+	    }
 }

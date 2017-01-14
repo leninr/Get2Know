@@ -163,28 +163,20 @@
 	                                    <thead>
 																					<th></th>
 																					<th>Artista Dueño</th>
-																					<th>Categoría</th>
 																					<th>Nombre de Arte</th>
-																					<th>Subido El</th>
-																					<th>Descripción</th>
 	                                    </thead>
 	                                    <tbody>
 																				<?php
 																					foreach ($this->b->getalldata() as $row) {
 																				?>
-																					<tr>
+																					<tr onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'">
 
-																						<td><img style="width: 150px;height: 150px;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoFiltrado/".$row->idcontent);?>'"
+																						<td><img style="width: 150px;height: 150px;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
 																						src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
 																						<td><?php foreach ($this->u->findById($row->idusuario) as $users) {
 																						 					echo $users->UsuarioName;
 																										} ?></td>
-																						<td><?php foreach ($this->c->findById($row->idcategoria) as $categories) {
-																						 					echo $categories->NomCategoria;
-																										} ?></td>
 																						<td><?php echo $row->nombreCont ?></td>
-																						<td><?php echo $row->fechaCont ?></td>
-																						<td><?php echo $row->descripCont ?></td>
 																						<!--<td>
 																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
 																						</td>
