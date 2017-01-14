@@ -51,7 +51,10 @@
 	                </a>
 	            </div>
 							<div>
-									<div class="card card-user">
+								<div class="card card-user">
+									<?php
+											if($this->session->userdata('is_logged_in'))
+											{ ?>
 											<div class="image">
 													<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
 											</div>
@@ -86,7 +89,9 @@
 													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
 
 											</div>
-									</div>
+									<?php } ?>
+
+								</div>
 							</div>
 	    	</div>
 	    </div>
@@ -105,7 +110,10 @@
 	                </div>
 	                <div class="collapse navbar-collapse">
 
-	                    <ul class="nav navbar-nav navbar-right">
+										<ul class="nav navbar-nav navbar-right">
+											<?php
+													if($this->session->userdata('is_logged_in'))
+													{ ?>
 	                        <li class="dropdown">
 	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                    Mi Arte
@@ -123,7 +131,18 @@
 																		<?= form_close() ?>
 
 	                        </li>
-	                    </ul>
+											<?php } else { ?>
+
+												<li>
+																<?php echo form_open_multipart('/Login_ctrl');?>
+
+																		<?= form_submit('','Login',"class='btn btn-lg btn-success btn-block btn-sm'")?>
+																	<?= form_close() ?>
+
+												</li>
+												<?php } ?>
+
+										</ul>
 	                </div>
 	            </div>
 	        </nav>
