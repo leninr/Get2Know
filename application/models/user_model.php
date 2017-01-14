@@ -48,8 +48,9 @@ class User_model extends CI_Model{
 			'email' => $data['email'],
 			'sobre' => $data['sobre']
 			);
-		$query = $this->db->where('idusuario',$iduser);
-		$actua = $this->db->update('tblusuario',$datos);
+		$this->db->where('idusuario',$iduser);
+		$this->db->update('tblusuario',$datos);
+
 	}
 
 	/*function LogInM($username,$password){
