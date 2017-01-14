@@ -80,8 +80,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	public function logout(){
 
+		$this->session->sess_destroy();
 
-		$this->session->unset_userdata('sesion');
 		$this->index();
 	}
 }
