@@ -198,34 +198,24 @@
 	        </div>
 
 
-	        <footer class="footer">
+					<footer class="footer">
 	            <div class="container-fluid">
 	                <nav class="pull-left">
 	                    <ul>
 	                        <li>
-	                            <a href="#">
+	                            <a href="http://localhost/Proyecto/content_ctrl/MostrarContenido">
 	                                Home
 	                            </a>
 	                        </li>
 	                        <li>
-	                            <a href="#">
+	                            <a href="http://www.udla.edu.ec">
 	                                Company
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                                Portfolio
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                               Blog
 	                            </a>
 	                        </li>
 	                    </ul>
 	                </nav>
 	                <p class="copyright pull-right">
-	                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+	                    &copy; 2017 <a href="http://www.udla.edu.ec">Universidad de las Américas</a> - Ingeniería en Sistemas de Computación e Informática
 	                </p>
 	            </div>
 	        </footer>
