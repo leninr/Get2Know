@@ -75,6 +75,17 @@ class User_model extends CI_Model{
 		else return false;
 	}
 
+	function findById($id){
+
+		$this->db->select('*');
+		$this->db->where('idusuario',$id);
+		$this->db->from('tblusuario');
+		$query=$this->db->get();
+
+		if($query->num_rows() > 0) return $query->result();
+		else return false;
+	}
+
 	function ReturnIduserM($username,$password){
 
 
