@@ -72,7 +72,8 @@
 															<br>
 															<br>
 															<br>
-																<h4 class="title">Mike Andrew<br />
+																<h4 class="title"><?php echo $this->session->userdata('ci_session')->nombre ?><br />
+
 																	 <small>michael24</small>
 																</h4>
 															</a>

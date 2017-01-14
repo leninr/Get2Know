@@ -14,11 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	public function index()
 	{
 		$this->load->view('Vista/login_view');
-		
+
 	}
 
 	public function validate(){
-		
+
 		$userNa = $this->input->post('username');
 		$pass = $this->input->post('password');
 
@@ -33,9 +33,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$data = array(
 					'username'=> $userNa,
 					'idusuario' => $idusuario,
+					'nombre' => $usuario,
 					'is_logged_in'=> TRUE
 				);
 				$this->session->set_userdata('ci_session',$data);
+				$this->session->set_userdata('user',$usuario);
 				redirect(base_url().'content_ctrl/MostrarContenido');
 			}
 			else
@@ -43,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$this->index();
 			}
 		}
-		
+
 	}
 
 	public function logout(){

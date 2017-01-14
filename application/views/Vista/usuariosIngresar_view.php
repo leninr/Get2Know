@@ -72,7 +72,9 @@
 															<br>
 															<br>
 															<br>
-																<h4 class="title">Mike Andrew<br />
+															<?php $user_data = $this->session->userdata('user');?>
+
+																<h4 class="title"><?php echo $user_data->Nombre?><br />
 																	 <small>michael24</small>
 																</h4>
 															</a>
@@ -135,24 +137,72 @@
 
 							<?= form_open('/user_ctrl/InsertarUsuarioC') ?>
 
+							<div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-8">
+	                        <div class="card">
+	                            <div class="header">
+	                                <h4 class="title" style="color:purple">Crear Cuenta</h4>
+	                            </div>
+	                            <div class="content">
+	                                <form>
+	                                    <div class="row">
 
-							<?= form_input(array('name' => 'UsuarioName','placeholder' => 'nombre usuario')) ?>
+																					<div class="col-md-5">
+																							<div class="form-group">
+																								<label>Username</label>
+																								<?= form_input(array('name' => 'UsuarioName','class' => 'form-control','type' => 'text', 'placeholder' => 'Nombre de Usuario')) ?>
+																							</div>
+																					</div>
+	                                        <div class="col-md-3">
+	                                            <div class="form-group">
+	                                                <label>Contraseña</label>
+																									<?= form_input(array('name' => 'Password','class' => 'form-control','type' => 'password','placeholder' => 'Contraseña')) ?>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-4">
+	                                            <div class="form-group">
+	                                                <label for="exampleInputEmail1">E-mail</label>
+																									<?= form_input( array('name' => 'email','class' => 'form-control','type' => 'email', 'placeholder' => 'E-mail')) ?>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="row">
+	                                        <div class="col-md-6">
+	                                            <div class="form-group">
+	                                                <label>Nombre</label>
+																									<?= form_input(array('name' => 'Nombre','class' => 'form-control','type' => 'text','placeholder' => 'Nombre')) ?>
+	                                            </div>
+	                                        </div>
+	                                        <div class="col-md-6">
+	                                            <div class="form-group">
+	                                                <label>Apellido</label>
+																									<?= form_input(array('name' => 'Apellido','class' => 'form-control','type' => 'text','placeholder' => 'Apellido')) ?>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+
+	                                    <div class="row">
+	                                        <div class="col-md-12">
+	                                            <div class="form-group">
+	                                                <label>Sobre Mi</label>
+																									<?= form_input(array('name' => 'sobre',	'class' => 'form-control','type' => 'text', 'placeholder' => 'Sobre Mi'	)) ?>
+	                                            </div>
+	                                        </div>
+	                                    </div>
 
 
-							<?= form_input(array('name' => 'Password','placeholder' => 'Contraseña')) ?>
+																			<?= form_submit('', 'Crear Cuenta',"class='btn btn-info btn-fill pull-right'")?>
+	                                    <div class="clearfix"></div>
+	                                </form>
+	                            </div>
+	                        </div>
+	                    </div>
 
-							<?= form_input(array('name' => 'Nombre','placeholder' => 'nombre')) ?>
+	                </div>
+	            </div>
 
-
-							<?= form_input(array('name' => 'Apellido','placeholder' => 'Apellido')) ?>
-
-
-							<?= form_input( array('name' => 'email','placeholder' => 'e-mail')) ?>
-
-
-							<?= form_input(array('name' => 'sobre',	'placeholder' => 'sobre ti'	)) ?>
-							</label>
-							<?= form_submit('','Crear Cuenta')?>
 							<?= form_close() ?>
 
 	        </div>

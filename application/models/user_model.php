@@ -53,17 +53,18 @@ class User_model extends CI_Model{
 	}
 
 	function LogInM($username,$password){
-		
+
 		$this->db->where('UsuarioName',$username);
 		$this->db->where('Password',$password);
-		$query=$this->db->get('tblusuario');
+		$this->db->from('tblusuario');
+		$query=$this->db->get();
 
-		if($query->num_rows() > 0) return $query->row()/*->result_array()*/;
+		if($query->num_rows() > 0) return $query->row();
 		else return false;
 	}
 
 	function ReturnIduserM($username,$password){
-		
+
 
 		 $query = $this->db->select('idusuario')->from('tblusuario')->where('UsuarioName',$username)->where('Password',$password)->get();
     	return $query->row();
