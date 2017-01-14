@@ -25,6 +25,9 @@ class content_ctrl extends CI_Controller {
 		$this->load->model('content_model','b');
 		$this->load->view('Vista/MostCont_view');
 		}
+		else {
+			$this->load->view('Vista/NoLogeado_view');
+		}
 	}
 
 	public function do_upload()
