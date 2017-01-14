@@ -1,11 +1,3 @@
-<!--<h1>this is the main template</h1>
-
-<?php
-
-	echo form_open('login_ctrl/logout');
-	echo form_submit("submit",'Log Out');
-	echo form_close();
-?>-->
 <!doctype html>
 	<html lang="en">
 	<head>
@@ -72,21 +64,25 @@
 															<br>
 															<br>
 															<br>
-																<h4 class="title"><?php echo $this->session->userdata('ci_session')->nombre ?><br />
 
-																	 <small>michael24</small>
+																<h4 class="title"><?php echo $this->session->userdata('Nombre');?>  <?php echo $this->session->userdata('Apellido');?><br />
+
+																	 <small><?php echo $this->session->userdata('username');?></small>
+
+
 																</h4>
 															</a>
 													</div>
-													<p class="description text-center"> "Lamborghini Mercy <br>
-																							Your chick she so thirsty <br>
-																							I'm in that two seat Lambo"
+													<p class="description text-center"> <?php echo $this->session->userdata('sobre');?>
 													</p>
 											</div>
 											<hr>
 											<div class="text-center">
 													<button href="#" class="btn btn-simple"><i class="fa fa-user"></i></button>
-													<button href="#" class="btn btn-simple"><i class="fa fa-gears"></i></button>
+
+													<?= form_open("/user_ctrl/EditarUsuarioC/".$this->session->userdata('idusuario')); ?>
+													<button type="submit" class="btn btn-simple"> <i class="fa fa-gears"></i></button>
+													<?= form_close() ?>
 													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
 
 											</div>
@@ -105,7 +101,7 @@
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                    </button>
-	                    <a class="navbar-brand" href="#">Get2Know!</a>
+	                    <a class="navbar-brand" href="http://localhost/Proyecto/content_ctrl/MostrarContenido">Get2Know!</a>
 	                </div>
 	                <div class="collapse navbar-collapse">
 
@@ -121,9 +117,11 @@
 	                              </ul>
 	                        </li>
 	                        <li>
-	                            <a href="#">
-	                                Log out
-	                            </a>
+																	<?php echo form_open_multipart('/Login_ctrl/logout');?>
+
+																    	<?= form_submit('','Log Out',"class='btn btn-outline btn-link btn-sm'")?>
+																		<?= form_close() ?>
+
 	                        </li>
 	                    </ul>
 	                </div>
@@ -133,8 +131,9 @@
 
 	        <div class="content">
 	            <!-- Página Hija-->
-							<h1>Bienvenido a Get2Know!</h1>
-							<h2>El Mejor Calificador de Arte del Ecuador</h2>
+
+
+
 	        </div>
 
 
@@ -218,6 +217,3 @@
 		</script>
 
 	</html>
-
-
-<!--<?php $this->load->view($content_view); ?>-->

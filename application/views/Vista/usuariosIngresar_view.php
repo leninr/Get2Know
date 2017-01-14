@@ -1,11 +1,3 @@
-<!--<h1>this is the main template</h1>
-
-<?php
-
-	echo form_open('login_ctrl/logout');
-	echo form_submit("submit",'Log Out');
-	echo form_close();
-?>-->
 <!doctype html>
 	<html lang="en">
 	<head>
