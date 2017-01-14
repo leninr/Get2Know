@@ -9,7 +9,7 @@ class content_ctrl extends CI_Controller {
 		$this->load->model('content_model');
 		$this->load->model('pregunta_model');
 		$this->load->model('calificacion_model');
-		
+
 	}
 
 	public function index()
@@ -20,7 +20,7 @@ class content_ctrl extends CI_Controller {
 
 	public function MostrarContenido(){
 
-		if($this->session->userdata('ci_session'))
+		if($this->session->userdata('is_logged_in'))
 		{
 		$this->load->model('content_model','b');
 		$this->load->view('Vista/MostCont_view');
@@ -31,10 +31,10 @@ class content_ctrl extends CI_Controller {
         {
 
         	$datoDB = array(
-			'idusuario' => $this->input->post('idusuario'), 
-			'idcategoria' => $this->input->post('idcategoria'), 
-			'nomCont' => $this->input->post('nomCont'), 
-			'descripcion' => $this->input->post('descripcion'), 
+			'idusuario' => $this->input->post('idusuario'),
+			'idcategoria' => $this->input->post('idcategoria'),
+			'nomCont' => $this->input->post('nomCont'),
+			'descripcion' => $this->input->post('descripcion'),
 			'fechaCont' => $this->input->post('fechaCont'),
 			'userfile' => $this->input->post('userfile')
 			);
@@ -55,7 +55,7 @@ class content_ctrl extends CI_Controller {
                 }
                 else
                 {
-                		
+
                 		$data = array('upload_data' => $this->upload->data());
                         $this->content_model->InsertarContentM($datoDB,$this->upload->data());
                         $this->load->view('Vista/upload_success', $data);
@@ -67,35 +67,35 @@ class content_ctrl extends CI_Controller {
     	$data['id'] = $this->uri->segment(3);
 		$getrow = $this->User_model->obtenerContUpdate($data['id']);
     	$row = $getrow->row();*/
-    	
+
 
     	$data['id'] = $this->uri->segment(3);
 		$data['Conte'] = $this->content_model->obtenerContUpdate($data['id']);
 		$this->load->view('Vista/UpdateContenido_view', $data);
-    	
+
     }
 
     public function do_edit(){
     	$id = $this->uri->segment(3);
     	$datoDB = array(
-			'idusuario' => $this->input->post('idusuario'), 
-			'idcategoria' => $this->input->post('idcategoria'), 
-			'nombreCont' => $this->input->post('nomCont'), 
-			'descripCont' => $this->input->post('descripcion'), 
+			'idusuario' => $this->input->post('idusuario'),
+			'idcategoria' => $this->input->post('idcategoria'),
+			'nombreCont' => $this->input->post('nomCont'),
+			'descripCont' => $this->input->post('descripcion'),
 			'fechaCont' => $this->input->post('fechaCont'),
 			'userfile' => $this->input->post('userfile')
 			);
 
     	$this->content_model->actualizarContM($id, $datoDB);
-    	
+
     }
 
      public function do_edit2(){
     	$idcontent = $this->input->post('idcontent');
     	$datoDB = array(
-			'idusuario' => $this->input->post('idusuario'), 
-			'idcategoria' => $this->input->post('idcategoria'), 
-			'nombreCont' => $this->input->post('nombreCont'), 
+			'idusuario' => $this->input->post('idusuario'),
+			'idcategoria' => $this->input->post('idcategoria'),
+			'nombreCont' => $this->input->post('nombreCont'),
 			'descripCont' => $this->input->post('descripCont'),
 			);
 
@@ -107,20 +107,20 @@ class content_ctrl extends CI_Controller {
 
     		$getpic = $this->db->query
     	}*/
-    	
-    	
+
+
     }
 
      public function do_editPrueba(){
-    	
+
     	$idcontent = $this->uri->segment(3);
     	$data = array(
 			'nombreCont' => $this->input->post('nombreCont')
 			);
 		$this->db->where('idcontent', $idcontent);
 		$this->db->update('tblcontenido',$data);
-    	
-    	
+
+
     }
 
    public function borrarContC(){
@@ -136,7 +136,7 @@ class content_ctrl extends CI_Controller {
 		//$filename = 'userfile';
 		$filename = 'userfile';
 
-		
+
 
 
 
@@ -153,17 +153,17 @@ class content_ctrl extends CI_Controller {
 			//$config['encrypt_name'] = true;
 
 			$this->load->library('upload',$config);
-			
-			
+
+
 			if(!$this->upload->do_upload('my_file_input_name')){
 
 				$status = 'error';
 				$msg  = $this->upload->display_errors('','');
 
 			}else{
-				
+
 				$this->content_model->InsertarContentM($data);
-				
+
 				$dato = array('upload_data' => $this->upload->data());
                 $fullpath= $dato['upload_data']['full_path'];
                 $file_name = $dato['upload_data']['file_name'];
@@ -184,12 +184,12 @@ class content_ctrl extends CI_Controller {
 	}
 
 	public function MostrarContenidoFiltrado(){
-    
+
 		if($this->session->userdata('ci_session'))
 		{
     	$data['id'] = $this->uri->segment(3);
 		$data['Conte'] = $this->content_model->obtenerContUpdate($data['id']);
-		
+
 
 		$data['pregunta'] = $this->pregunta_model->BuscarporCatePreguntaM($data['Conte']->result()[0]->idcategoria);
 
@@ -201,26 +201,26 @@ class content_ctrl extends CI_Controller {
 
 		if ($data['countcal'] != 0) {
 
-			$data['resultadoCal'] = $data['sumacal'] / $data['countcal']; 
+			$data['resultadoCal'] = $data['sumacal'] / $data['countcal'];
 		}else
 		{
 			$data['resultadoCal'] = "no hay preguntas";
 		}
 
-		
+
 
 		$data['iduser'] = $this->session->userdata('ci_session');
 
 
 		$this->load->view('Vista/cont_update_view',$data);
-    	
+
     	}
     }
 
     public function actualizarCalificacionConC(){
     	$idcontent = $this->uri->segment(3);
     	$datoDB = $this->input->post('Calificación');
-    	
+
 
     	$this->content_model->actualizarCalificacionM($idcontent, $datoDB);
 
@@ -230,7 +230,7 @@ class content_ctrl extends CI_Controller {
 
     		$getpic = $this->db->query
     	}*/
-    	
-    	
+
+
     }
 }

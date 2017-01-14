@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	}
 
-	public function validate(){
+	/*public function validate(){
 
 		$userNa = $this->input->post('username');
 		$pass = $this->input->post('password');
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$usuario = $this->User_model->LogInM($userNa,$pass);
 			$idusuario = $this->User_model->ReturnIduserM($userNa,$pass);
 
-			if($usuario/*->num_rows()==1*/)
+			if($usuario)
 			{
 				$data = array(
 					'username'=> $userNa,
@@ -46,11 +46,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 		}
 
+	}*/
+
+	public function validate(){
+
+		$userNa = $this->input->post('username');
+		$pass = $this->input->post('password');
+
+		if($userNa)
+		{
+
+			$usuario = $this->User_model->LogInM($userNa,$pass);
+			$idusuario = $this->User_model->ReturnIduserM($userNa,$pass);
+
+			if($usuario/*->num_rows()==1*/)
+			{
+				$data = array(
+					'username'=> $userNa,
+					'idusuario' => $idusuario,
+					'is_logged_in'=> TRUE
+				);
+				$this->session->set_userdata($data);
+				$this->session->set_userdata($usuario);
+				redirect(base_url().'content_ctrl/MostrarContenido');
+			}
+			else
+			{
+				$this->index();
+			}
+		}
+
 	}
 
 	public function logout(){
 
-		$this->session->unset_userdata('ci_session');
+
+		$this->session->unset_userdata('sesion');
 		$this->index();
 	}
 }

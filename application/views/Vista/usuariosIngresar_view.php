@@ -72,16 +72,16 @@
 															<br>
 															<br>
 															<br>
-															<?php $user_data = $this->session->userdata('user');?>
 
-																<h4 class="title"><?php echo $user_data->Nombre?><br />
-																	 <small>michael24</small>
+																<h4 class="title"><?php echo $this->session->userdata('Nombre');?>  <?php echo $this->session->userdata('Apellido');?><br />
+
+																	 <small><?php echo $this->session->userdata('username');?></small>
+
+
 																</h4>
 															</a>
 													</div>
-													<p class="description text-center"> "Lamborghini Mercy <br>
-																							Your chick she so thirsty <br>
-																							I'm in that two seat Lambo"
+													<p class="description text-center"> <?php echo $this->session->userdata('sobre');?>
 													</p>
 											</div>
 											<hr>
@@ -122,9 +122,11 @@
 	                              </ul>
 	                        </li>
 	                        <li>
-	                            <a href="#">
-	                                Log out
-	                            </a>
+																	<?php echo form_open_multipart('/Login_ctrl/logout');?>
+
+																    	<?= form_submit('','Log Out',"class='btn btn-outline btn-link btn-sm'")?>
+																		<?= form_close() ?>
+
 	                        </li>
 	                    </ul>
 	                </div>

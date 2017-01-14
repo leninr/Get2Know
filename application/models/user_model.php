@@ -52,7 +52,7 @@ class User_model extends CI_Model{
 		$actua = $this->db->update('tblusuario',$datos);
 	}
 
-	function LogInM($username,$password){
+	/*function LogInM($username,$password){
 
 		$this->db->where('UsuarioName',$username);
 		$this->db->where('Password',$password);
@@ -60,6 +60,18 @@ class User_model extends CI_Model{
 		$query=$this->db->get();
 
 		if($query->num_rows() > 0) return $query->row();
+		else return false;
+	}*/
+
+	function LogInM($username,$password){
+
+		$this->db->select('*');
+		$this->db->where('UsuarioName',$username);
+		$this->db->where('Password',$password);
+		$this->db->from('tblusuario');
+		$query=$this->db->get();
+
+		if($query->num_rows() > 0) return $query->row_array();
 		else return false;
 	}
 
