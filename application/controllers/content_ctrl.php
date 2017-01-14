@@ -188,7 +188,7 @@ class content_ctrl extends CI_Controller {
 
 	public function MostrarContenidoFiltrado(){
 
-		if($this->session->userdata('ci_session'))
+		if($this->session->userdata('is_logged_in'))
 		{
     	$data['id'] = $this->uri->segment(3);
 		$data['Conte'] = $this->content_model->obtenerContUpdate($data['id']);
