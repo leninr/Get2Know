@@ -165,7 +165,7 @@
 
 
                     <td>
-                      <img style="width: 200px;height: 200px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
+                      <img style="width: 400px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
                     </td>
                     <td><?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
                               echo $users->UsuarioName;
