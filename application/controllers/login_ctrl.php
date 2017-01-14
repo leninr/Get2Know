@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			{
 				$data = array(
 					'username'=> $userNa,
-					'idusuario' => $idusuario,
+					//'idusuario' => $idusuario,
 					'is_logged_in'=> TRUE
 				);
 				$this->session->set_userdata($data);

@@ -87,7 +87,10 @@
 											<hr>
 											<div class="text-center">
 													<button href="#" class="btn btn-simple"><i class="fa fa-user"></i></button>
-													<button href="#" class="btn btn-simple"><i class="fa fa-gears"></i></button>
+
+													<?= form_open("/user_ctrl/EditarUsuarioC/".$this->session->userdata('idusuario')); ?>
+													<button type="submit" class="btn btn-simple"> <i class="fa fa-gears"></i></button>
+													<?= form_close() ?>
 													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
 
 											</div>
@@ -106,7 +109,7 @@
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                    </button>
-	                    <a class="navbar-brand" href="#">Get2Know!</a>
+	                    <a class="navbar-brand" href="http://localhost/Proyecto/content_ctrl/MostrarContenido">Get2Know!</a>
 	                </div>
 	                <div class="collapse navbar-collapse">
 
