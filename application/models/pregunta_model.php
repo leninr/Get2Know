@@ -20,12 +20,14 @@ class pregunta_model extends CI_Model{
 		else return false;
 	}
 
-	function obtenerPreguntaUpdate($iduser){
+	function obtenerPreguntaUpdate($id){
 
-		$array = array('idPregunta = ' => $iduser);
+		$this->db->select('*');
+		$this->db->where('idPregunta',$id);
+		$this->db->from('tblpregunta');
+		$query=$this->db->get();
 
-		$query = $this->db->get_where('tblpregunta',$array);
-		if($query->num_rows() > 0) return $query->result_array()/*->result_array()*/;
+		if($query->num_rows() > 0) return $query->result_array();
 		else return false;
 	}
 

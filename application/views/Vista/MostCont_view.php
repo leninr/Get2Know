@@ -114,13 +114,33 @@
 											<?php
 													if($this->session->userdata('is_logged_in'))
 													{ ?>
+														<li class="dropdown">
+		                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                                    Pregunta
+		                                    <b class="caret"></b>
+		                              </a>
+		                              <ul class="dropdown-menu">
+		                                <li><a href="http://localhost/Proyecto/pregunta_ctrl/">Crear</a></li>
+																		<li><a href="http://localhost/Proyecto/pregunta_ctrl/obtenerPreguntaC">Ver</a></li>
+		                              </ul>
+		                        </li>
+													<li class="dropdown">
+	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                                    Categoría
+	                                    <b class="caret"></b>
+	                              </a>
+	                              <ul class="dropdown-menu">
+	                                <li><a href="http://localhost/Proyecto/categoria_ctrl/">Crear</a></li>
+																	<li><a href="http://localhost/Proyecto/categoria_ctrl/obtenerCategoriaC">Ver</a></li>
+	                              </ul>
+	                        </li>
 	                        <li class="dropdown">
 	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                    Mi Arte
 	                                    <b class="caret"></b>
 	                              </a>
 	                              <ul class="dropdown-menu">
-	                                <li><a href="#">Ver Mis Artes</a></li>
+	                                <li><a href="http://localhost/Proyecto/content_ctrl/MostrarMiContenido">Ver Mis Artes</a></li>
 	                                <li><a href="http://localhost/Proyecto/content_ctrl/">Agregar Nueva Arte</a></li>
 	                              </ul>
 	                        </li>
@@ -162,8 +182,9 @@
 	                                <table class="table table-hover table-striped">
 	                                    <thead>
 																					<th></th>
-																					<th>Artista Dueño</th>
+																					<th>Artista</th>
 																					<th>Nombre de Arte</th>
+																					<th>Categoría</th>
 	                                    </thead>
 	                                    <tbody>
 																				<?php
@@ -177,6 +198,12 @@
 																						 					echo $users->UsuarioName;
 																										} ?></td>
 																						<td><?php echo $row->nombreCont ?></td>
+																						<td>
+																							<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
+																								if ($categories->idCategoria==$row->idcategoria){ ?>
+																									<?php echo $categories->NomCategoria; ?>
+																							<?php  } } ?>
+																						</td>
 																						<!--<td>
 																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
 																						</td>

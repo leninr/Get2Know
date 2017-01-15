@@ -114,13 +114,33 @@
 											<?php
 													if($this->session->userdata('is_logged_in'))
 													{ ?>
+														<li class="dropdown">
+		                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                                    Pregunta
+		                                    <b class="caret"></b>
+		                              </a>
+		                              <ul class="dropdown-menu">
+		                                <li><a href="http://localhost/Proyecto/pregunta_ctrl/">Crear</a></li>
+																		<li><a href="http://localhost/Proyecto/pregunta_ctrl/obtenerPreguntaC">Ver</a></li>
+		                              </ul>
+		                        </li>
+													<li class="dropdown">
+	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	                                    Categoría
+	                                    <b class="caret"></b>
+	                              </a>
+	                              <ul class="dropdown-menu">
+	                                <li><a href="http://localhost/Proyecto/categoria_ctrl/">Crear</a></li>
+																	<li><a href="http://localhost/Proyecto/categoria_ctrl/obtenerCategoriaC">Ver</a></li>
+	                              </ul>
+	                        </li>
 	                        <li class="dropdown">
 	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                    Mi Arte
 	                                    <b class="caret"></b>
 	                              </a>
 	                              <ul class="dropdown-menu">
-	                                <li><a href="#">Ver Mis Artes</a></li>
+	                                <li><a href="http://localhost/Proyecto/content_ctrl/MostrarMiContenido">Ver Mis Artes</a></li>
 	                                <li><a href="http://localhost/Proyecto/content_ctrl/">Agregar Nueva Arte</a></li>
 	                              </ul>
 	                        </li>

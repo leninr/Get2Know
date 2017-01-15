@@ -34,6 +34,22 @@ class content_ctrl extends CI_Controller {
 		}
 	}
 
+
+		public function MostrarMiContenido(){
+
+			if($this->session->userdata('is_logged_in'))
+			{
+				$this->load->model('content_model','b');
+
+				$this->load->model('User_model', 'u');
+				$this->load->model('categoria_model', 'c');
+				$this->load->view('Vista/MostrarMiCont_view');
+			}
+			else {
+				$this->load->view('Vista/NoLogeado_view');
+			}
+		}
+
 	public function do_upload()
   {
 
@@ -133,7 +149,7 @@ class content_ctrl extends CI_Controller {
    public function borrarContC(){
 		$id = $this->uri->segment(3);
 		$this->content_model->ContEliminar($id);
-		$this->MostrarContenido();
+		$this->MostrarMiContenido();
 	}
 
 	public function InsertarContentC(){

@@ -171,71 +171,57 @@
 	        <div class="content">
 	            <!-- Página Hija-->
 
-							<?php echo form_open_multipart('/content_ctrl/do_edit2');?>
+              <div class="container-fluid">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="card">
+	                            <div class="header">
+	                                <h4 class="title" style="color:purple">Mis Artes</h4>
+	                            </div>
+	                            <div class="content table-responsive table-full-width">
+	                                <table class="table table-hover table-striped">
+	                                    <thead>
+																					<th></th>
+																					<th>Artista</th>
+																					<th>Nombre de Arte</th>
+																					<th>Categoría</th>
+	                                    </thead>
+	                                    <tbody>
+																				<?php
+																					foreach ($this->b->getMisArtes() as $row) {
+																				?>
+																					<tr onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'">
 
-	            <div class="container-fluid">
-		                <div class="row">
-		                    <div class="col-md-8">
-		                        <div class="card">
-		                            <div class="header">
-		                                <h4 class="title" style="color:purple">Actualizar Contenido</h4>
-		                            </div>
-		                            <div class="content">
-		                                <form>
-		                                    <div class="row">
+																						<td><img style="width: 150px;height: 150px;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
+																						src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
+																						<td><?php foreach ($this->u->findById($row->idusuario) as $users) {
+																						 					echo $users->UsuarioName;
+																										} ?></td>
+																						<td><?php echo $row->nombreCont ?></td>
+																						<td>
+																							<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
+																								if ($categories->idCategoria==$row->idcategoria){ ?>
+																									<?php echo $categories->NomCategoria; ?>
+																							<?php  } } ?>
+																						</td>
+																						<td>
+																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
+																						</td>
+																						<td>
+																							<a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
+																						</td>
+																					</tr>
+																				<?php
+																					}
+																				?>
 
-																						<div class="col-md-3">
-																								<div class="form-group">
-																									<label>Nombre Contenido</label>
-																									<?= form_input(array('name' => 'nombreCont','class' => 'form-control'	 , 'value' => $Conte->result()[0]->nombreCont,'placeholder' => 'nombre Contenido')) ?>
-																								</div>
-																						</div>
-		                                        <div class="col-md-3">
-		                                            <div class="form-group">
-																									<label>Categoría</label>
-																									<select class="form-control" name="idcategoria">
-																										<option value="" disabled selected>Categoria</option>
-																										<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories): ?>
-																											<?php if ($categories->idCategoria == $Conte->result()[0]->idcategoria): ?>
-																												<option value=".<?php echo $categories->idCategoria ?>." selected="selected"><?php echo $categories->NomCategoria ?></option>
-																											<?php else: ?>
-																													<option value=".<?php echo $categories->idCategoria ?>."> <?php echo $categories->NomCategoria ?> </option>
-																											<?php endif; ?>
-																										<?php endforeach; ?>
-																									</select>
-		                                            </div>
-		                                        </div>
-		                                        <div class="col-md-11">
-		                                            <div class="form-group">
-																									<label>Descripción</label>
-																										<?= form_input(array('name' => 'descripCont','class' => 'form-control', 'value' => $Conte->result()[0]->descripCont,'placeholder' => 'Descripcion')) ?>
-		                                            </div>
-		                                        </div>
-																						<div class="col-md-5">
-																								<div class="form-group">
-																											<img style="width: 150px;height: 150px;" src="<?php echo base_url('file/'.$Conte->result()[0]->Cont) ?>">
-																								</div>
-																						</div>
-
-		                                    </div>
-
-		                                    </div>
-
-
-																				<?= form_submit('','Actualizar Contenido',"class='btn btn-info btn-fill pull-right'")?>
-		                                    <div class="clearfix"></div>
-		                                </form>
-																		<?= form_input(array('name' => 'idcontent','type'=>'hidden' ,'value' => $Conte->result()[0]->idcontent,'placeholder' => 'id Contenido')) ?>
-																		<?= form_close() ?>
-		                            </div>
-		                        </div>
-		                    </div>
-
-											</div>
-									</div>
-
-		        </div>
-
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
 
 	        </div>
 
