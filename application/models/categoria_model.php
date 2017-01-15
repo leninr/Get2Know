@@ -9,8 +9,7 @@ class categoria_model extends CI_Model{
 
 	function InsertarCategoriaM($data){
 			$this->db->insert('tblcategoria', array(
-			'NomCategoria' => $data['NomCategoria'],
-			'Esmusica' => $data['Esmusica']
+			'NomCategoria' => $data['NomCategoria']
 			));
 	}
 

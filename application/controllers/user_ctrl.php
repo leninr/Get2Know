@@ -91,6 +91,8 @@ class user_ctrl extends CI_Controller {
 			);
 
 		$this->User_model->InsertarUsuarioM($data);
-		$this->load->view('Vista/usuariosIngresar_view');
+		$this->load->view('Vista/login_view');
+		$this->session->set_flashdata('success_msg', 'Usuario Creado');
+		echo $this->session->flashdata('success_msg');
 	}
 }

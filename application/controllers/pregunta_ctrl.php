@@ -26,26 +26,33 @@ class pregunta_ctrl extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/IngresarPregunta_view');
-		
+
 	}
 
 	public function obtenerPreguntaC(){
 		$data['Preguntas'] = $this->pregunta_model->obtenerPreguntaM();
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/MostPregunta_view',$data);
 	}
 
 	public function EditarPreguntaC(){
-		$data['id'] = $this->uri->segment(3);
-		$data['Preguntas'] = $this->pregunta_model->obtenerPreguntaUpdate($data['id']);
+		/*$data['id'] = $this->uri->segment(3);
+		$data['Preguntas'] = $this->pregunta_model->obtenerPreguntaUpdate($data['id']);*/
+		$data = array(
+			'id' => $this->uri->segment(3),
+			'Preguntas' => $this->pregunta_model->obtenerPreguntaUpdate($data['id'])
+			);
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/UpdatePregunta_view',$data);
 
 	}
 
 	/*public function BuscarporCatePreguntaC($idCate){
-		
+
 		$data['Listcate'] = $this->pregunta_model->BuscarporCatePreguntaM($idCate);
-		
+
 
 	}*/
 
@@ -54,7 +61,7 @@ class pregunta_ctrl extends CI_Controller {
 		$data['id'] = $this->uri->segment(3);
 		$data['idcom'] = $this->uri->segment(4);
 		$data = array(
-			'idCategoria' => $this->input->post('idCategoria'), 
+			'idCategoria' => $this->input->post('idCategoria'),
 			'PreguntaC' => $this->input->post('PreguntaC')
 			);
 		$this->pregunta_model->actualizarPreguntaM($this->uri->segment(3),$data);
@@ -70,7 +77,7 @@ class pregunta_ctrl extends CI_Controller {
 
 	public function InsertarPreguntaC(){
 		$data = array(
-			'idCategoria' => $this->input->post('idCategoria'), 
+			'idCategoria' => $this->input->post('idCategoria'),
 			'PreguntaC' => $this->input->post('PreguntaC')
 			);
 

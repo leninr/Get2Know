@@ -13,7 +13,7 @@ class categoria_ctrl extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('Vista/categoriaIngresar_view');
-		
+
 	}
 
 	public function obtenerCategoriaC(){
@@ -38,7 +38,7 @@ class categoria_ctrl extends CI_Controller {
 		}
 
 		$data = array(
-			'NomCategoria' => $this->input->post('NomCategoria'), 
+			'NomCategoria' => $this->input->post('NomCategoria'),
 			'Esmusica' => $this->input->post('Esmusica')
 			);
 		$this->categoria_model->actualizarCategoriaM($this->uri->segment(3),$data);
@@ -61,12 +61,14 @@ class categoria_ctrl extends CI_Controller {
 			$valesMusica = 1;
 		}
 		$data = array(
-			'NomCategoria' => $this->input->post('NomCategoria'), 
-			'Esmusica' => $valesMusica
+			'NomCategoria' => $this->input->post('NomCategoria')
 			);
 
 		$this->categoria_model->InsertarCategoriaM($data);
-		//$this->load->view('Vista/usuariosIngresar_view');
+		$this->load->model('content_model','b');
+		$this->load->model('User_model', 'u');
+		$this->load->model('categoria_model', 'c');
+		$this->load->view('Vista/MostCont_view');
 	}
 }
 ?>
