@@ -182,92 +182,80 @@
               </table>
 
               <?php if (empty($pregunta)){ ?>
-            	<a> No existen Preguntas para esta categoria todavia</a>
-            	<?php }else{ ?>
+            				<i> No existen Preguntas para esta categoria todavia</i>
+            	<?php } else { ?>
+								<table class="table table-hover table-striped">
+									<thead>
+                      <th>Preguntas</th>
+                      <th>Responde</th>
+                  </thead>
+									<tbody>
+										<?php foreach ($pregunta as $preg): ?>
+											<tr>
+															<td>
+																<?= form_input(array('name' => 'idPregunta', 'value' =>  $preg['idPregunta'] ,'placeholder' => 'nombre usuario','style'=>'display: none'))?>
+																<i><?php echo $preg['PreguntaC'] ?></i>
+															</td>
+																		<?= form_open('/calificacion_ctrl/InsertarCalificacionC') ?>
+															<td>
 
+																		<?= form_input(array('name' => 'idcontent', 'value' => $Conte->result()[0]->idcontent,'placeholder' => 'Contenido', 'style'=>'display: none')) ?>
+																		<?= form_input(array('name' => 'idusuario','value' => $iduser,'placeholder' => 'usuario', 'style'=>'display: none')) ?>
+																		<?= form_input(array('name' => 'idPregunta', 'value' => $preg['idPregunta'],'placeholder' => 'pregunta','style'=>'display: none')) ?>
+																		<ul style="list-style-type: none;">
+																			<li>
+																					<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '1')) ?><a> 1</a>
+																			</li>
+																			<li>
+																				<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '2')) ?><a> 2</a>
+																			</li>
+																			<li>
+																				<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '3')) ?><a> 3</a>
+																			</li>
+																			<li>
+																				<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '4')) ?><a> 4</a>
+																			</li>
+																			<li>
+																				<?= form_input(array('name' => 'Calificacion','type'=> 'radio', 'value' => '5')) ?><a> 5</a>
+																			</li>
+																		</ul>
+															</td>
+															<td></td>
+															<td>
+																		<button type="submit" class="btn btn-primary">Calificar</button>
+															</td>
+															<?= form_close() ?>
 
-            	<?php foreach ($pregunta as $preg): ?>
-            	  <tr>
+											</tr>
+										<?php endforeach; ?>
+										<tr>
 
-            	    <tr>
-            						<?= form_input(array('name' => 'idPregunta', 'value' =>  $preg['idPregunta'] ,'placeholder' => 'nombre usuario','style'=>'display: none'))?>
-            						<?= form_input(array('name' => 'descripCont', 'value' => $preg['PreguntaC'] ,'placeholder' => 'nombre usuario'))?>
-            						<br>
-            						<br>
-            						<div>
-            						<?= form_open('/calificacion_ctrl/InsertarCalificacionC') ?>
+										</tr>
+											<tr>
+													<?php if (empty($CalFil)){ ?>
+															<td>
+																<i> No existen calificaciones para este contenido todavia</i>
+															</td>
+													<?php } else { ?>
+															<td>
+																		<?php echo form_open_multipart('/content_ctrl/actualizarCalificacionConC/'.$Conte->result()[0]->idcontent);?>
 
-            						<?= form_input(array('name' => 'idcontent', 'value' => $Conte->result()[0]->idcontent,'placeholder' => 'Contenido', 'style'=>'display: none')) ?>
-            						<?= form_input(array('name' => 'idusuario','value' => $iduser,'placeholder' => 'usuario', 'style'=>'display: none')) ?>
-            						<?= form_input(array('name' => 'idPregunta', 'value' => $preg['idPregunta'],'placeholder' => 'pregunta','style'=>'display: none')) ?>
+																		<?= form_input(array('name' => 'Calificación', 'value' => $resultadoCal,'placeholder' => 'nombre usuario')) ?><a>Calificacion nueva</a>
+																		<?= form_submit('','Actualizar Calificacion')?>
+																	<?= form_close() ?>
+															</td>
+															<td>
+																	<a> Suma:  <?php echo $sumacal ?></a>
+															</td>
+															<td>
+																	<a> Cuenta:  <?php echo $countcal ?></a>
+															</td>
+														<?php } ?>
+												</tr>
+									</tbody>
 
-            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '1')) ?><a> 1</a>
-            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '2')) ?><a> 2</a>
-            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '3')) ?><a> 3</a>
-            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '4')) ?><a> 4</a>
-            						<?= form_input(array('name' => 'Calificacion','type'=> 'radio', 'value' => '5')) ?><a> 5</a>
-
-            						<?= form_submit('','Crear Calificacion')?>
-            						<?= form_close() ?>
-            						</div>
-            					</tr>
-            	  </tr>
-            	<?php endforeach; ?>
-
-
-
-
-            	<?php
-
-            					}
-            	?>
-
-            	<br>
-            	<br>
-
-            	<div>
-            	<?php if (empty($CalFil)){ ?>
-            	<a> No existen calificaciones para este contenido todavia</a>
-            	<?php }else{ ?>
-
-            	<?php foreach ($CalFil as $Cal): ?>
-                            <ul>
-                                <li> <?php echo $Cal['idcontent'] ?> / <?php echo $Cal['idusuario'] ?> / <?php echo $Cal['idPregunta'] ?> / <?php echo $Cal['Calificacion'] ?></li>
-
-                            </ul>
-
-                <?php endforeach; ?>
-                <?php } ?>
-
-                        <a> suma carajo:  <?php echo $sumacal ?></a>
-                        <br>
-                        <a> cuenta carajo:  <?php echo $countcal ?></a>
-
-
-                </div>
-
-                <div>
-
-                	<?php echo form_open_multipart('/content_ctrl/actualizarCalificacionConC/'.$Conte->result()[0]->idcontent);?>
-
-                	<?= form_input(array('name' => 'Calificación', 'value' => $resultadoCal,'placeholder' => 'nombre usuario')) ?><a>Calificacion nueva</a>
-                	<?= form_submit('','Actualizar Calificacion')?>
-            		<?= form_close() ?>
-
-                </div>
-
-                <br>
-
-
-                <br>
-
-                <?php echo form_open_multipart('/content_ctrl/MostrarContenido/');?>
-
-
-                	<?= form_submit('','Muro')?>
-            		<?= form_close() ?>
-
-
+								</table>
+							<?php } ?>
 	        </div>
 
 
