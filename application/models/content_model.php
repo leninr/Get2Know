@@ -13,6 +13,13 @@ class content_model extends CI_Model{
 		return $query->result();
 	}
 
+	function getMisArtes(){
+
+		$this->db->where('idusuario', $this->session->userdata('idusuario'));
+		$query = $this->db->get('tblcontenido');
+		return $query->result();
+	}
+
 	function obtenerContUpdate($idCont){
 		$query = $this->db->get_where('tblcontenido',
 		array('idcontent' => $idCont));

@@ -43,7 +43,7 @@ class content_ctrl extends CI_Controller {
 
 				$this->load->model('User_model', 'u');
 				$this->load->model('categoria_model', 'c');
-				$this->load->view('Vista/MostCont_view');
+				$this->load->view('Vista/MostrarMiCont_view');
 			}
 			else {
 				$this->load->view('Vista/NoLogeado_view');
@@ -149,7 +149,7 @@ class content_ctrl extends CI_Controller {
    public function borrarContC(){
 		$id = $this->uri->segment(3);
 		$this->content_model->ContEliminar($id);
-		$this->MostrarContenido();
+		$this->MostrarMiContenido();
 	}
 
 	public function InsertarContentC(){

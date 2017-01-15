@@ -182,7 +182,7 @@
 	                                <table class="table table-hover table-striped">
 	                                    <thead>
 																					<th></th>
-																					<th>Artista Dueño</th>
+																					<th>Artista</th>
 																					<th>Nombre de Arte</th>
 																					<th>Categoría</th>
 	                                    </thead>
