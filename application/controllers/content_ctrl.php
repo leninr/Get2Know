@@ -276,6 +276,7 @@ class content_ctrl extends CI_Controller {
 
 					$this->load->model('User_model', 'u');
 					$this->load->model('categoria_model', 'c');
+					$this->load->model('calificacion_model', 'l');
 					$this->load->view('Vista/MostContIndividual_view',$data);
 
 	    	}
