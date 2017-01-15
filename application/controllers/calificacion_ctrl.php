@@ -76,7 +76,7 @@ class calificacion_ctrl extends CI_Controller {
 			);
 
 		$this->calificacion_model->InsertarCalificacionM($data);
-		$this->content_model->actualizarCalificacionM($this->input->post('Calificación'));
+		$this->content_model->actualizarCalificacionM($data['idcontent'], $this->input->post('Calificación'));
 		$this->obtenerCalificacionC();
 		//$this->load->view('Vista/usuariosIngresar_view');
 	}
