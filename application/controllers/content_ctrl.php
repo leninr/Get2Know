@@ -269,13 +269,13 @@ class content_ctrl extends CI_Controller {
 
 
 
-					$data['iduser'] = $this->session->userdata('ci_session');
+					$data['iduser'] = $this->session->userdata('idusuario');
 
 
-						$this->load->model('content_model','b');
+					$this->load->model('content_model','b');
 
-						$this->load->model('User_model', 'u');
-						$this->load->model('categoria_model', 'c');
+					$this->load->model('User_model', 'u');
+					$this->load->model('categoria_model', 'c');
 					$this->load->view('Vista/MostContIndividual_view',$data);
 
 	    	}

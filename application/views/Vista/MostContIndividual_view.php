@@ -162,30 +162,21 @@
                       <th>Calificación</th>
                   </thead>
                   <tbody>
+										<tr>
+		                    <td>
+		                      <img style="width: 400px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
+		                    </td>
+		                    <td><?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
+		                              echo $users->UsuarioName;
+		                            } ?></td>
+		                    <td><?php foreach ($this->c->findById($Conte->result()[0]->idcategoria) as $categories) {
+		                              echo $categories->NomCategoria;
+		                            } ?></td>
 
-                    <td>
-                      <img style="width: 400px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
-                    </td>
-                    <td><?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
-                              echo $users->UsuarioName;
-                            } ?></td>
-                    <td><?php foreach ($this->c->findById($Conte->result()[0]->idcategoria) as $categories) {
-                              echo $categories->NomCategoria;
-                            } ?></td>
-
-                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
-                    <td><?php echo $Conte->result()[0]->fechaCont ?></td>
-                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
-                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
-
-
-
-                        <!--<td>
-                          <a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
-                        </td>
-                        <td>
-                          <a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
-                        </td>-->
+			                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
+			                    <td><?php echo $Conte->result()[0]->fechaCont ?></td>
+			                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
+			                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
                       </tr>
                   </tbody>
               </table>
@@ -207,7 +198,7 @@
             						<?= form_open('/calificacion_ctrl/InsertarCalificacionC') ?>
 
             						<?= form_input(array('name' => 'idcontent', 'value' => $Conte->result()[0]->idcontent,'placeholder' => 'Contenido', 'style'=>'display: none')) ?>
-            						<?= form_input(array('name' => 'idusuario','value' => $iduser['idusuario'],'placeholder' => 'usuario', 'style'=>'display: none')) ?>
+            						<?= form_input(array('name' => 'idusuario','value' => $iduser,'placeholder' => 'usuario', 'style'=>'display: none')) ?>
             						<?= form_input(array('name' => 'idPregunta', 'value' => $preg['idPregunta'],'placeholder' => 'pregunta','style'=>'display: none')) ?>
 
             						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '1')) ?><a> 1</a>
