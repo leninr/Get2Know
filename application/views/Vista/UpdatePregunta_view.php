@@ -168,11 +168,13 @@
 																								<label>Categoria</label>
 																									<select id = "idCategoria" name="idCategoria" class = "form-control">
 																										<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories): ?>
-																											<?php if ($categories->idCategoria==$Preguntas->result()[0]->idCategoria): ?>
+																											<?php foreach($Preguntas as $Pregunta) { ?>
+																											<?php if ($categories->idCategoria == $Pregunta['idCategoria']): ?>
 																												<option value=".<?php echo $categories->idCategoria ?>." selected="selected"> <?php echo $categories->NomCategoria ?> </option>
 																											<?php else: ?>
 																													<option value=".<?php echo $categories->idCategoria ?>."> <?php echo $categories->NomCategoria ?> </option>
 																											<?php endif; ?>
+																											<?php } ?>
 																										<?php endforeach; ?>
 																									</select>
 																							</div>
@@ -180,12 +182,14 @@
 	                                        <div class="col-md-5">
 	                                            <div class="form-group">
 	                                                <label>Pregunta</label>
-																									<?= form_input(array('name' => 'PreguntaC', 'value' => $Preguntas->result()[0]->PreguntaC,'placeholder' => 'Pregunta')) ?>
+																									<?php foreach ($Preguntas as $Pregunta) { ?>
+																										<?= form_input(array('name' => 'PreguntaC', 'class' => 'form-control', 'value' => $Pregunta['PreguntaC'],'placeholder' => 'Pregunta')) ?>
+																									<?php } ?>
 	                                            </div>
 	                                        </div>
 	                                    </div>
 
-																			<?= form_submit('','Crear Contenido')?>
+																			<?= form_submit('','Editar Pregunta',"class='btn btn-info btn-fill pull-right'")?>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>

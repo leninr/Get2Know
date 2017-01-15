@@ -176,10 +176,10 @@
 																						</td>
 																						<td><?php echo $Pregunta['PreguntaC']; ?></td>
 																						<td>
-																							<a href="<?php echo site_url('pregunta_ctrl/EditarPreguntaC/'.$Pregunta['idCategoria']); ?>">Editar</a>
+																							<a href="<?php echo site_url('pregunta_ctrl/EditarPreguntaC/'.$Pregunta['idPregunta']); ?>">Editar</a>
 																						</td>
 																						<td>
-																							<a href="<?php echo site_url('pregunta_ctrl/borrarPreguntaC/'.$Pregunta['idCategoria']); ?>" style="color:red">Eliminar</a>
+																							<a href="<?php echo site_url('pregunta_ctrl/borrarPreguntaC/'.$Pregunta['idPregunta']); ?>" style="color:red">Eliminar</a>
 																						</td>
 																					</tr>
 																				<?php

@@ -22,11 +22,12 @@ class pregunta_model extends CI_Model{
 
 	function obtenerPreguntaUpdate($id){
 
-		$array = array('idPregunta = ' => $id);
+		$this->db->select('*');
+		$this->db->where('idPregunta',$id);
+		$this->db->from('tblpregunta');
+		$query=$this->db->get();
 
-		$this->db->where('idPregunta', $id);
-		$query = $this->db->get_where('tblpregunta');
-		if($query->num_rows() > 0) return $query->result_array()/*->result_array()*/;
+		if($query->num_rows() > 0) return $query->result_array();
 		else return false;
 	}
 
