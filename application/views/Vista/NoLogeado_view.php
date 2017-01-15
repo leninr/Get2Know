@@ -51,7 +51,10 @@
 	                </a>
 	            </div>
 							<div>
-									<div class="card card-user">
+								<div class="card card-user">
+									<?php
+											if($this->session->userdata('is_logged_in'))
+											{ ?>
 											<div class="image">
 													<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
 											</div>
@@ -86,7 +89,9 @@
 													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
 
 											</div>
-									</div>
+									<?php } ?>
+
+								</div>
 							</div>
 	    	</div>
 	    </div>
@@ -105,7 +110,10 @@
 	                </div>
 	                <div class="collapse navbar-collapse">
 
-	                    <ul class="nav navbar-nav navbar-right">
+										<ul class="nav navbar-nav navbar-right">
+											<?php
+													if($this->session->userdata('is_logged_in'))
+													{ ?>
 	                        <li class="dropdown">
 	                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	                                    Mi Arte
@@ -123,7 +131,18 @@
 																		<?= form_close() ?>
 
 	                        </li>
-	                    </ul>
+											<?php } else { ?>
+
+												<li>
+																<?php echo form_open_multipart('/Login_ctrl');?>
+
+																		<?= form_submit('','Login',"class='btn btn-lg btn-success btn-block btn-sm'")?>
+																	<?= form_close() ?>
+
+												</li>
+												<?php } ?>
+
+										</ul>
 	                </div>
 	            </div>
 	        </nav>
@@ -137,34 +156,24 @@
 	        </div>
 
 
-	        <footer class="footer">
+					<footer class="footer">
 	            <div class="container-fluid">
 	                <nav class="pull-left">
 	                    <ul>
 	                        <li>
-	                            <a href="#">
+	                            <a href="http://localhost/Proyecto/content_ctrl/MostrarContenido">
 	                                Home
 	                            </a>
 	                        </li>
 	                        <li>
-	                            <a href="#">
+	                            <a href="http://www.udla.edu.ec">
 	                                Company
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                                Portfolio
-	                            </a>
-	                        </li>
-	                        <li>
-	                            <a href="#">
-	                               Blog
 	                            </a>
 	                        </li>
 	                    </ul>
 	                </nav>
 	                <p class="copyright pull-right">
-	                    &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+	                    &copy; 2017 <a href="http://www.udla.edu.ec">Universidad de las Américas</a> - Ingeniería en Sistemas de Computación e Informática
 	                </p>
 	            </div>
 	        </footer>

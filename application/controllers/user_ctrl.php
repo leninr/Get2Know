@@ -27,7 +27,7 @@ class user_ctrl extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('Vista/usuariosIngresar_view');
-		
+
 	}
 
 	public function obtenerdatos(){
@@ -44,15 +44,33 @@ class user_ctrl extends CI_Controller {
 
 	public function ActualizarUsuarioC(){
 		$data = array(
-			'UsuarioName' => $this->input->post('UsuarioName'), 
-			'Password' => $this->input->post('Password'), 
-			'Nombre' => $this->input->post('Nombre'), 
-			'Apellido' => $this->input->post('Apellido'), 
+			'UsuarioName' => $this->input->post('UsuarioName'),
+			'Password' => $this->input->post('Password'),
+			'Nombre' => $this->input->post('Nombre'),
+			'Apellido' => $this->input->post('Apellido'),
 			'email' => $this->input->post('email'),
 			'sobre' => $this->input->post('sobre')
 			);
 		$this->User_model->actualizarUsuarioM($this->uri->segment(3),$data);
-		$this->load->view('welcome_message');
+
+
+		$usuario = $this->User_model->LogInM($this->input->post('UsuarioName'),$this->input->post('Password'));
+
+		if($usuario/*->num_rows()==1*/)
+		{
+				$dats = array(
+					'username'=> $this->input->post('UsuarioName'),
+					//'idusuario' => $idusuario,
+					'is_logged_in'=> TRUE
+				);
+				$this->session->set_userdata($dats);
+				$this->session->set_userdata($usuario);
+		}
+
+		$this->load->model('content_model','b');
+		$this->load->model('User_model', 'u');
+		$this->load->model('categoria_model', 'c');
+		$this->load->view('Vista/MostCont_view');
 
 	}
 
@@ -64,10 +82,10 @@ class user_ctrl extends CI_Controller {
 
 	public function InsertarUsuarioC(){
 		$data = array(
-			'UsuarioName' => $this->input->post('UsuarioName'), 
-			'Password' => $this->input->post('Password'), 
-			'Nombre' => $this->input->post('Nombre'), 
-			'Apellido' => $this->input->post('Apellido'), 
+			'UsuarioName' => $this->input->post('UsuarioName'),
+			'Password' => $this->input->post('Password'),
+			'Nombre' => $this->input->post('Nombre'),
+			'Apellido' => $this->input->post('Apellido'),
 			'email' => $this->input->post('email'),
 			'sobre' => $this->input->post('sobre')
 			);

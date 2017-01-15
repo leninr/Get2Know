@@ -42,6 +42,19 @@ class categoria_model extends CI_Model{
 		$query = $this->db->where('idCategoria',$id);
 		$actua = $this->db->update('tblcategoria',$datos);
 	}
+
+
+	function findById($id){
+
+		$this->db->select('*');
+		$this->db->where('idCategoria',$id);
+		$this->db->from('tblcategoria');
+		$query=$this->db->get();
+
+		if($query->num_rows() > 0) return $query->result();
+		else return false;
+	}
 }
+
 
 ?>

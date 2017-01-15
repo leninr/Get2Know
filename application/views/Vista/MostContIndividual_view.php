@@ -151,106 +151,136 @@
 	        <div class="content">
 	            <!-- Página Hija-->
 
-							<?= form_open("/user_ctrl/ActualizarUsuarioC/".$id) ?>
+              <table class="table table-hover table-striped">
+                  <thead>
+                      <th></th>
+                      <th>Artista Dueño</th>
+                      <th>Categoría</th>
+                      <th>Nombre de Arte</th>
+                      <th>Subido El</th>
+                      <th>Descripción</th>
+                      <th>Calificación</th>
+                  </thead>
+                  <tbody>
 
-							<div class="container-fluid">
-	                <div class="row">
-	                    <div class="col-md-8">
-	                        <div class="card">
-	                            <div class="header">
-	                                <h4 class="title" style="color:purple">Editar tu Perfil</h4>
-	                            </div>
-	                            <div class="content">
-	                                <form>
-	                                    <div class="row">
+                    <td>
+                      <img style="width: 400px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
+                    </td>
+                    <td><?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
+                              echo $users->UsuarioName;
+                            } ?></td>
+                    <td><?php foreach ($this->c->findById($Conte->result()[0]->idcategoria) as $categories) {
+                              echo $categories->NomCategoria;
+                            } ?></td>
 
-																					<div class="col-md-5">
-																							<div class="form-group">
-																								<label>Username</label>
-																								<?= form_input(array('name' => 'UsuarioName',
-																									'class' => 'form-control',
-																									'placeholder' => 'Nombre de Usuario',
-																									'value' => $usuarios->result()[0]->UsuarioName
-																								)) ?>
-																							</div>
-																					</div>
-	                                        <div class="col-md-3">
-	                                            <div class="form-group">
-	                                                <label>Contraseña</label>
-																									<?= form_input(array('name' => 'Password',
-																									'class' => 'form-control',
-																									'placeholder' => 'Contraseña',
-																									'type' => 'password',
-																									'value' => $usuarios->result()[0]->Password
-																									)) ?>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-md-4">
-	                                            <div class="form-group">
-	                                                <label for="exampleInputEmail1">E-mail</label>
-																									<?= form_input( array('name' => 'email',
-																									'class' => 'form-control',
-																									'type' => 'email',
-																									'placeholder' => 'E-mail',
-																									'value' => $usuarios->result()[0]->email
-																									)) ?>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-6">
-	                                            <div class="form-group">
-	                                                <label>Nombre</label>
-																									<?= form_input(array('name' => 'Nombre',
-																									'class' => 'form-control',
-																									'placeholder' => 'Nombre',
-																									'value' => $usuarios->result()[0]->Nombre
-																									)) ?>
-	                                            </div>
-	                                        </div>
-	                                        <div class="col-md-6">
-	                                            <div class="form-group">
-	                                                <label>Apellido</label>
-																									<?= form_input(array('name' => 'Apellido',
-																									'class' => 'form-control',
-																									'placeholder' => 'Apellido',
-																									'value' => $usuarios->result()[0]->Apellido
-																									)) ?>
-	                                            </div>
-	                                        </div>
-	                                    </div>
-
-	                                    <div class="row">
-	                                        <div class="col-md-12">
-	                                            <div class="form-group">
-	                                                <label>Sobre Mi</label>
-																									<?= form_input(array('name' => 'sobre',
-																									'class' => 'form-control',
-																									'placeholder' => 'Sobre Mi',
-																									'value' => $usuarios->result()[0]->sobre
-																									)) ?>
-	                                            </div>
-	                                        </div>
-	                                    </div>
+                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
+                    <td><?php echo $Conte->result()[0]->fechaCont ?></td>
+                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
+                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
 
 
-																			<?= form_submit('','Actualizar Cuenta',"class='btn btn-info btn-fill pull-right'")?>
-	                                    <div class="clearfix"></div>
-	                                </form>
-	                            </div>
-	                        </div>
-	                    </div>
 
-	                </div>
-	            </div>
+                        <!--<td>
+                          <a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
+                        </td>
+                        <td>
+                          <a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
+                        </td>-->
+                      </tr>
+                  </tbody>
+              </table>
 
-							<?= form_close() ?>
+              <?php if (empty($pregunta)){ ?>
+            	<a> No existen Preguntas para esta categoria todavia</a>
+            	<?php }else{ ?>
+
+
+            	<?php foreach ($pregunta as $preg): ?>
+            	  <tr>
+
+            	    <tr>
+            						<?= form_input(array('name' => 'idPregunta', 'value' =>  $preg['idPregunta'] ,'placeholder' => 'nombre usuario','style'=>'display: none'))?>
+            						<?= form_input(array('name' => 'descripCont', 'value' => $preg['PreguntaC'] ,'placeholder' => 'nombre usuario'))?>
+            						<br>
+            						<br>
+            						<div>
+            						<?= form_open('/calificacion_ctrl/InsertarCalificacionC') ?>
+
+            						<?= form_input(array('name' => 'idcontent', 'value' => $Conte->result()[0]->idcontent,'placeholder' => 'Contenido', 'style'=>'display: none')) ?>
+            						<?= form_input(array('name' => 'idusuario','value' => $iduser['idusuario'],'placeholder' => 'usuario', 'style'=>'display: none')) ?>
+            						<?= form_input(array('name' => 'idPregunta', 'value' => $preg['idPregunta'],'placeholder' => 'pregunta','style'=>'display: none')) ?>
+
+            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '1')) ?><a> 1</a>
+            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '2')) ?><a> 2</a>
+            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '3')) ?><a> 3</a>
+            						<?= form_input(array('name' => 'Calificacion', 'type'=> 'radio', 'value' => '4')) ?><a> 4</a>
+            						<?= form_input(array('name' => 'Calificacion','type'=> 'radio', 'value' => '5')) ?><a> 5</a>
+
+            						<?= form_submit('','Crear Calificacion')?>
+            						<?= form_close() ?>
+            						</div>
+            					</tr>
+            	  </tr>
+            	<?php endforeach; ?>
+
+
+
+
+            	<?php
+
+            					}
+            	?>
+
+            	<br>
+            	<br>
+
+            	<div>
+            	<?php if (empty($CalFil)){ ?>
+            	<a> No existen calificaciones para este contenido todavia</a>
+            	<?php }else{ ?>
+
+            	<?php foreach ($CalFil as $Cal): ?>
+                            <ul>
+                                <li> <?php echo $Cal['idcontent'] ?> / <?php echo $Cal['idusuario'] ?> / <?php echo $Cal['idPregunta'] ?> / <?php echo $Cal['Calificacion'] ?></li>
+
+                            </ul>
+
+                <?php endforeach; ?>
+                <?php } ?>
+
+                        <a> suma carajo:  <?php echo $sumacal ?></a>
+                        <br>
+                        <a> cuenta carajo:  <?php echo $countcal ?></a>
+
+
+                </div>
+
+                <div>
+
+                	<?php echo form_open_multipart('/content_ctrl/actualizarCalificacionConC/'.$Conte->result()[0]->idcontent);?>
+
+                	<?= form_input(array('name' => 'Calificación', 'value' => $resultadoCal,'placeholder' => 'nombre usuario')) ?><a>Calificacion nueva</a>
+                	<?= form_submit('','Actualizar Calificacion')?>
+            		<?= form_close() ?>
+
+                </div>
+
+                <br>
+
+
+                <br>
+
+                <?php echo form_open_multipart('/content_ctrl/MostrarContenido/');?>
+
+
+                	<?= form_submit('','Muro')?>
+            		<?= form_close() ?>
+
 
 	        </div>
 
 
-					<footer class="footer">
+          <footer class="footer">
 	            <div class="container-fluid">
 	                <nav class="pull-left">
 	                    <ul>

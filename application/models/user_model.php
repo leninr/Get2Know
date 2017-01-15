@@ -48,8 +48,9 @@ class User_model extends CI_Model{
 			'email' => $data['email'],
 			'sobre' => $data['sobre']
 			);
-		$query = $this->db->where('idusuario',$iduser);
-		$actua = $this->db->update('tblusuario',$datos);
+		$this->db->where('idusuario',$iduser);
+		$this->db->update('tblusuario',$datos);
+
 	}
 
 	/*function LogInM($username,$password){
@@ -72,6 +73,17 @@ class User_model extends CI_Model{
 		$query=$this->db->get();
 
 		if($query->num_rows() > 0) return $query->row_array();
+		else return false;
+	}
+
+	function findById($id){
+
+		$this->db->select('*');
+		$this->db->where('idusuario',$id);
+		$this->db->from('tblusuario');
+		$query=$this->db->get();
+
+		if($query->num_rows() > 0) return $query->result();
 		else return false;
 	}
 

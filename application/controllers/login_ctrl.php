@@ -8,7 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		$this->load->model('User_model');
-		//$this->load->model('User_model');
 	}
 
 	public function index()
@@ -80,8 +79,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	public function logout(){
 
+		$this->session->sess_destroy();
 
-		$this->session->unset_userdata('sesion');
 		$this->index();
 	}
 }
