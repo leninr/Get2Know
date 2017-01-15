@@ -121,7 +121,7 @@
 	                              </a>
 	                              <ul class="dropdown-menu">
 	                                <li><a href="#">Ver Mis Artes</a></li>
-	                                <li><a href="#">Agregar Nueva Arte</a></li>
+	                                <li><a href="http://localhost/Proyecto/content_ctrl/">Agregar Nueva Arte</a></li>
 	                              </ul>
 	                        </li>
 	                        <li>
@@ -173,7 +173,12 @@
 																						</div>
 		                                        <div class="col-md-3">
 		                                            <div class="form-group">
-																										<?= form_input(array('name' => 'idcategoria','class' => 'form-control','placeholder' => 'idCategoria')) ?>
+																										<select id = "idcategoria" name="idcategoria" class = "form-control">
+																											<option value="" disabled selected>Categoria</option>
+																												<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {?>
+																		                              <option value=".<?php echo $categories->idCategoria ?>."> <?php echo $categories->NomCategoria ?> </option>
+																		                          <?php  } ?>
+																										</select>
 		                                            </div>
 		                                        </div>
 		                                        <div class="col-md-11">
