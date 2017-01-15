@@ -78,6 +78,7 @@ class content_ctrl extends CI_Controller {
 
     	$data['id'] = $this->uri->segment(3);
 		$data['Conte'] = $this->content_model->obtenerContUpdate($data['id']);
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/UpdateContenido_view', $data);
 
     }
@@ -100,7 +101,6 @@ class content_ctrl extends CI_Controller {
      public function do_edit2(){
     	$idcontent = $this->input->post('idcontent');
     	$datoDB = array(
-			'idusuario' => $this->input->post('idusuario'),
 			'idcategoria' => $this->input->post('idcategoria'),
 			'nombreCont' => $this->input->post('nombreCont'),
 			'descripCont' => $this->input->post('descripCont'),

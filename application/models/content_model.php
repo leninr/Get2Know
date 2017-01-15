@@ -35,7 +35,6 @@ class content_model extends CI_Model{
 
 	function actualizarContM($idcontent,$datoDB){
 		$data = array(
-			'idusuario' => $datoDB['idusuario'],
 			'idcategoria' => $datoDB['idcategoria'],
 			'nombreCont' => $datoDB['nombreCont'],
 			'descripCont' => $datoDB['descripCont']
