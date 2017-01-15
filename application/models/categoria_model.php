@@ -54,6 +54,13 @@ class categoria_model extends CI_Model{
 		if($query->num_rows() > 0) return $query->result();
 		else return false;
 	}
+
+	function obtenerCategoriaParaDropdownM(){
+		$query = $this->db->get('tblcategoria');
+		if($query->num_rows() > 0) return $query->result();
+		else return false;
+	}
+
 }
 
 

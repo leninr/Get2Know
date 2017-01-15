@@ -82,6 +82,16 @@ class calificacion_model extends CI_Model{
 		return $num_rows; // prints the number of rows in table users with account status $i
 	}
 
+	function obtenerCalificacionUsuarioPreguntaContenido($idUsuario, $idPregunta, $idContent){
+
+		$this->db->where('idcontent', $idContent);
+		$this->db->where('idusuario', $idUsuario);
+		$this->db->where('idPregunta', $idPregunta);
+
+		$query = $this->db->get('tblcalificacion');
+		if($query->num_rows() > 0) return $query->row_array();
+		else return false;
+	}
 
 }
 

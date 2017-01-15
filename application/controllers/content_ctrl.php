@@ -15,6 +15,7 @@ class content_ctrl extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('Vista/cont_view');
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/upload_form', array('error' => ' ' ));
 	}
 
@@ -276,6 +277,7 @@ class content_ctrl extends CI_Controller {
 
 					$this->load->model('User_model', 'u');
 					$this->load->model('categoria_model', 'c');
+					$this->load->model('calificacion_model', 'l');
 					$this->load->view('Vista/MostContIndividual_view',$data);
 
 	    	}
