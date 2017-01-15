@@ -56,7 +56,16 @@ class pregunta_model extends CI_Model{
 		else return false;
 	}
 
-	
+	function obtenerPreguntaFiltradoUserContM($idcontent,$idusuario){
+		$this->db->where('idusuario',$idusuario);
+		$this->db->where('idcontent',$idcontent);
+		$query = $this->db->get('tblpregunta');
+		if($query->num_rows() > 0) return $query->result_array();
+		else return false;
+	}
+
 }
+
+
 
 ?>

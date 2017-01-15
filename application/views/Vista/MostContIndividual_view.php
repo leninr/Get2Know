@@ -220,7 +220,6 @@
 																			</li>
 																		</ul>
 															</td>
-															<td></td>
 															<td>
 																		<button type="submit" class="btn btn-primary">Calificar</button>
 															</td>
@@ -240,16 +239,12 @@
 															<td>
 																		<?php echo form_open_multipart('/content_ctrl/actualizarCalificacionConC/'.$Conte->result()[0]->idcontent);?>
 
-																		<?= form_input(array('name' => 'Calificación', 'value' => $resultadoCal,'placeholder' => 'nombre usuario')) ?><a>Calificacion nueva</a>
-																		<?= form_submit('','Actualizar Calificacion')?>
+																		<?= form_input(array('name' => 'Calificación', 'style' => 'display:none', 'value' => $resultadoCal,'placeholder' => 'nombre usuario')) ?>
+
 																	<?= form_close() ?>
 															</td>
-															<td>
-																	<a> Suma:  <?php echo $sumacal ?></a>
-															</td>
-															<td>
-																	<a> Cuenta:  <?php echo $countcal ?></a>
-															</td>
+															<td></td>
+															<td></td>
 														<?php } ?>
 												</tr>
 									</tbody>

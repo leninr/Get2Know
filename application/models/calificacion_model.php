@@ -66,7 +66,7 @@ class calificacion_model extends CI_Model{
 
 	function obtenerSumaCalificacion($idContent){
 
-				
+
 		$this->db->select_sum('Calificacion');
 		$this->db->from('tblcalificacion');
 		$this->db->where('idcontent',$idContent);
@@ -76,13 +76,13 @@ class calificacion_model extends CI_Model{
 
 	function obtenerCountCalificacion($idContent){
 
-				
+
 		$this->db->where('idcontent', $idContent);
 		$num_rows = $this->db->count_all_results('tblcalificacion');
 		return $num_rows; // prints the number of rows in table users with account status $i
 	}
 
-	
+
 }
 
 ?>
