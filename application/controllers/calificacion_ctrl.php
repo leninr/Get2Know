@@ -7,6 +7,7 @@ class calificacion_ctrl extends CI_Controller {
 		parent:: __construct();
 		$this->load->helper('form');
 		$this->load->model('calificacion_model');
+		$this->load->model('content_model');
 	}
 
 	/**
@@ -27,7 +28,7 @@ class calificacion_ctrl extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('Vista/IngresarCalificacion_view');
-		
+
 	}
 
 	public function obtenerCalificacionC(){
@@ -49,8 +50,8 @@ class calificacion_ctrl extends CI_Controller {
 		$data['idcom'] = $this->uri->segment(4);
 		$data['idpreg'] = 1;
 		$data = array(
-			'idcontent' => $this->input->post('idcontent'), 
-			'idusuario' => $this->input->post('idusuario'), 
+			'idcontent' => $this->input->post('idcontent'),
+			'idusuario' => $this->input->post('idusuario'),
 			'idPregunta' => $this->input->post('idPregunta'),
 			'Calificacion' => $this->input->post('Calificacion')
 			);
@@ -60,20 +61,22 @@ class calificacion_ctrl extends CI_Controller {
 	}
 
 	public function borrarCalificacionC(){
-		
+
 		$this->calificacion_model->CalificacionEliminar($this->uri->segment(3),$this->uri->segment(4),$this->uri->segment(5));
 		$this->obtenerCalificacionC();
 	}
 
 	public function InsertarCalificacionC(){
 		$data = array(
-			'idcontent' => $this->input->post('idcontent'), 
-			'idusuario' => $this->input->post('idusuario'), 
+			'idcontent' => $this->input->post('idcontent'),
+			'idusuario' => $this->input->post('idusuario'),
 			'idPregunta' => $this->input->post('idPregunta'),
-			'Calificacion' => $this->input->post('Calificacion')	
+			'Calificacion' => $this->input->post('Calificacion')
+
 			);
 
 		$this->calificacion_model->InsertarCalificacionM($data);
+		$this->content_model->actualizarCalificacionM($this->input->post('Calificación'));
 		$this->obtenerCalificacionC();
 		//$this->load->view('Vista/usuariosIngresar_view');
 	}

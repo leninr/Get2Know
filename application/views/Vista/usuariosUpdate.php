@@ -46,7 +46,7 @@
 
 	    	<div class="sidebar-wrapper">
 	            <div class="logo">
-	                <a href="http://www.creative-tim.com" class="simple-text">
+	                <a href="http://localhost/Proyecto/content_ctrl/MostrarContenido" class="simple-text">
 	                    <i class="fa fa-eye"></i>
 	                </a>
 	            </div>
