@@ -140,7 +140,7 @@
 	                                    <b class="caret"></b>
 	                              </a>
 	                              <ul class="dropdown-menu">
-	                                <li><a href="#">Ver Mis Artes</a></li>
+	                                <li><a href="http://localhost/Proyecto/content_ctrl/MostrarMiContenido">Ver Mis Artes</a></li>
 	                                <li><a href="http://localhost/Proyecto/content_ctrl/">Agregar Nueva Arte</a></li>
 	                              </ul>
 	                        </li>
