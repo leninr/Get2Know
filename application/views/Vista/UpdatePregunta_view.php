@@ -168,7 +168,7 @@
 																								<label>Categoria</label>
 																									<select id = "idCategoria" name="idCategoria" class = "form-control">
 																										<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories): ?>
-																											<?php if ($categories->idCategoria==$Preguntas['idCategoria']): ?>
+																											<?php if ($categories->idCategoria==$Preguntas->result()[0]->idCategoria): ?>
 																												<option value=".<?php echo $categories->idCategoria ?>." selected="selected"> <?php echo $categories->NomCategoria ?> </option>
 																											<?php else: ?>
 																													<option value=".<?php echo $categories->idCategoria ?>."> <?php echo $categories->NomCategoria ?> </option>
