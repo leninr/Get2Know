@@ -25,7 +25,7 @@ class pregunta_model extends CI_Model{
 		$array = array('idPregunta = ' => $iduser);
 
 		$query = $this->db->get_where('tblpregunta',$array);
-		if($query->num_rows() > 0) return $query/*->result_array()*/;
+		if($query->num_rows() > 0) return $query->result_array()/*->result_array()*/;
 		else return false;
 	}
 

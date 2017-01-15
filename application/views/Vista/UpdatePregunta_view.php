@@ -166,7 +166,15 @@
 																					<div class="col-md-5">
 																							<div class="form-group">
 																								<label>Categoria</label>
-																								<?= form_input(array('name' => 'idCategoria', 'value' => $Preguntas->result()[0]->idCategoria,'placeholder' => 'Categoria')) ?>
+																									<select id = "idCategoria" name="idCategoria" class = "form-control">
+																										<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories): ?>
+																											<?php if ($categories->idCategoria==$Preguntas['idCategoria']): ?>
+																												<option value=".<?php echo $categories->idCategoria ?>." selected="selected"> <?php echo $categories->NomCategoria ?> </option>
+																											<?php else: ?>
+																													<option value=".<?php echo $categories->idCategoria ?>."> <?php echo $categories->NomCategoria ?> </option>
+																											<?php endif; ?>
+																										<?php endforeach; ?>
+																									</select>
 																							</div>
 																					</div>
 	                                        <div class="col-md-5">
