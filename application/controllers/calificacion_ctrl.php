@@ -8,6 +8,7 @@ class calificacion_ctrl extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('calificacion_model');
 		$this->load->model('content_model');
+		$this->load->helper('url');
 	}
 
 	/**
@@ -67,6 +68,7 @@ class calificacion_ctrl extends CI_Controller {
 	}
 
 	public function InsertarCalificacionC(){
+		
 		$data = array(
 			'idcontent' => $this->input->post('idcontent'),
 			'idusuario' => $this->input->post('idusuario'),
@@ -77,7 +79,9 @@ class calificacion_ctrl extends CI_Controller {
 
 		$this->calificacion_model->InsertarCalificacionM($data);
 		$this->content_model->actualizarCalificacionM($data['idcontent'], $this->input->post('Calificación'));
-		$this->obtenerCalificacionC();
+		//$this->obtenerCalificacionC();
+
+		redirect('http://localhost/Proyecto/content_ctrl/MostrarContenidoIndividual/'.$this->input->post('idcontent'));
 		//$this->load->view('Vista/usuariosIngresar_view');
 	}
 }
