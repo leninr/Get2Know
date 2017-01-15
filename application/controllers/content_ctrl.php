@@ -50,6 +50,21 @@ class content_ctrl extends CI_Controller {
 			}
 		}
 
+		public function MostrarContMax(){
+
+			if($this->session->userdata('is_logged_in'))
+			{
+				$this->load->model('content_model','b');
+
+				$this->load->model('User_model', 'u');
+				$this->load->model('categoria_model', 'c');
+				$this->load->view('Vista/MostrarMejoresCont_view');
+			}
+			else {
+				$this->load->view('Vista/NoLogeado_view');
+			}
+		}
+
 	public function do_upload()
   {
 

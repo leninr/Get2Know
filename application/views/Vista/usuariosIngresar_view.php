@@ -86,7 +86,9 @@
 													<?= form_open("/user_ctrl/EditarUsuarioC/".$this->session->userdata('idusuario')); ?>
 													<button type="submit" class="btn btn-simple"> <i class="fa fa-gears"></i></button>
 													<?= form_close() ?>
-													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
+													<?= form_open("/content_ctrl/MostrarContMax/"); ?>
+													<button type="submit" class="btn btn-simple"> <i class="fa fa-trophy"></i></button>
+													<?= form_close() ?>
 
 											</div>
 									<?php } ?>
