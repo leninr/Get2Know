@@ -171,11 +171,12 @@
 	        <div class="content">
 	            <!-- Página Hija-->
 
-								<?php echo $error;?>
+
 
 								<?php echo form_open_multipart('/content_ctrl/do_upload');?>
 
 								<div class="container-fluid">
+									<?php echo $error;?>
 		                <div class="row">
 		                    <div class="col-md-8">
 		                        <div class="card">
