@@ -174,11 +174,12 @@
 		                            } ?></td>
 
 			                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
-			                    <td><?php echo $Conte->result()[0]->fechaCont ?></td>
+			                    <td><?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCont)) ?></td>
 			                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
 			                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
                       </tr>
                   </tbody>
+									<td>Ultima Fecha de Actualización: <?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCambio)) ?></td>
               </table>
 
               <?php if (empty($pregunta)){ ?>
