@@ -28,3 +28,4 @@ application/config/database.php
 *.sublime-workspace
 *.sublime-project
 application/config/database.php
+application/config/database.php
