@@ -155,15 +155,51 @@
 
 								<?php echo form_open_multipart('/content_ctrl/do_upload');?>
 
-									<?= form_input(array('name' => 'idusuario','placeholder' => 'nombre usuario')) ?>
-									<?= form_input(array('name' => 'idcategoria','placeholder' => 'nombre usuario')) ?>
-									<?= form_input(array('name' => 'nomCont','placeholder' => 'nombre usuario')) ?>
-									<?= form_input(array('name' => 'fechaCont','value'=> date("Y-m-d"),'placeholder' => 'nombre usuario')) ?>
-									<?= form_input(array('name' => 'descripcion','placeholder' => 'nombre usuario')) ?>
-									<input type="file" name="userfile">
-									<?= form_submit('','Crear Contenido')?>
-									<?= form_close() ?>
+								<div class="container-fluid">
+		                <div class="row">
+		                    <div class="col-md-8">
+		                        <div class="card">
+		                            <div class="header">
+		                                <h4 class="title" style="color:purple">Ingresar Contenido</h4>
+		                            </div>
+		                            <div class="content">
+		                                <form>
+		                                    <div class="row">
 
+																						<div class="col-md-3">
+																								<div class="form-group">
+																									<?= form_input(array('name' => 'nomCont','class' => 'form-control','placeholder' => 'Nombre del Contenido')) ?>
+																								</div>
+																						</div>
+		                                        <div class="col-md-3">
+		                                            <div class="form-group">
+																										<?= form_input(array('name' => 'idcategoria','class' => 'form-control','placeholder' => 'idCategoria')) ?>
+		                                            </div>
+		                                        </div>
+		                                        <div class="col-md-11">
+		                                            <div class="form-group">
+																										<?= form_input(array('name' => 'descripCont','class' => 'form-control','placeholder' => 'descripcion')) ?>
+		                                            </div>
+		                                        </div>
+
+		                                    </div>
+
+		                                    </div>
+
+																									<input type="file" id="userfile" name="userfile" >
+																									<label for="userfile" style = "purple" class="btn btn-info btn-fill pull-left">Seleccionar Elemento</label>
+
+																				<?= form_submit('','Crear Contenido',"class='btn btn-info btn-fill pull-right'")?>
+		                                    <div class="clearfix"></div>
+		                                </form>
+
+																		<?= form_close() ?>
+		                            </div>
+		                        </div>
+		                    </div>
+
+											</div>
+									</div>
 
 		        </div>
 

@@ -37,11 +37,11 @@ class content_ctrl extends CI_Controller {
   {
 
         	$datoDB = array(
-			'idusuario' => $this->input->post('idusuario'),
+			'idusuario' => $this->session->userdata('idusuario'),
 			'idcategoria' => $this->input->post('idcategoria'),
 			'nomCont' => $this->input->post('nomCont'),
-			'descripcion' => $this->input->post('descripcion'),
-			'fechaCont' => $this->input->post('fechaCont'),
+			'descripCont' => $this->input->post('descripCont'),
+			'fechaCont' => date("Y-m-d"),
 			'userfile' => $this->input->post('userfile')
 			);
 

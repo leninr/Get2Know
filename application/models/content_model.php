@@ -27,7 +27,7 @@ class content_model extends CI_Model{
 			'idcategoria' => $data['idcategoria'],
 			'nombreCont' => $data['nomCont'],
 			'fechaCont' => $data['fechaCont'],
-			'descripCont' => $data['descripcion'],
+			'descripCont' => $data['descripCont'],
 			'Cont' => $image_data['file_name']
 			));
 		return $this->db->insert_id();
