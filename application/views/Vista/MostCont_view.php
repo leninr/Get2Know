@@ -184,6 +184,7 @@
 																					<th></th>
 																					<th>Artista Dueño</th>
 																					<th>Nombre de Arte</th>
+																					<th>Categoría</th>
 	                                    </thead>
 	                                    <tbody>
 																				<?php
@@ -197,6 +198,12 @@
 																						 					echo $users->UsuarioName;
 																										} ?></td>
 																						<td><?php echo $row->nombreCont ?></td>
+																						<td>
+																							<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
+																								if ($categories->idCategoria==$row->idcategoria){ ?>
+																									<?php echo $categories->NomCategoria; ?>
+																							<?php  } } ?>
+																						</td>
 																						<!--<td>
 																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
 																						</td>
