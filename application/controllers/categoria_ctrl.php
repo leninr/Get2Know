@@ -65,6 +65,9 @@ class categoria_ctrl extends CI_Controller {
 			);
 
 		$this->categoria_model->InsertarCategoriaM($data);
+		$this->load->model('content_model','b');
+		$this->load->model('User_model', 'u');
+		$this->load->model('categoria_model', 'c');
 		$this->load->view('Vista/MostCont_view');
 	}
 }
