@@ -56,7 +56,7 @@
 											if($this->session->userdata('is_logged_in'))
 											{ ?>
 											<div class="image">
-													<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+													<img src="http://cotos-ever.net/blog/wp-content/uploads/2014/06/Depositphotos_18570799_s.jpg" alt="..."/>
 											</div>
 											<div class="content">
 													<div class="author">
@@ -176,32 +176,17 @@
               <table class="table table-hover table-striped">
                   <thead>
                       <th></th>
-                      <th>Artista Dueño</th>
-                      <th>Categoría</th>
-                      <th>Nombre de Arte</th>
-                      <th>Subido El</th>
-                      <th>Descripción</th>
-                      <th>Calificación</th>
                   </thead>
                   <tbody>
 										<tr>
 		                    <td>
-		                      <img style="width: 400px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>">
+		                      <center><img style="width: 800px;height: 400px" src="<?= base_url('/file/'.$Conte->result()[0]->Cont); ?>"></center>
 		                    </td>
-		                    <td><?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
-		                              echo $users->UsuarioName;
-		                            } ?></td>
-		                    <td><?php foreach ($this->c->findById($Conte->result()[0]->idcategoria) as $categories) {
-		                              echo $categories->NomCategoria;
-		                            } ?></td>
-
-			                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
-			                    <td><?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCont)) ?></td>
-			                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
-			                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
                       </tr>
                   </tbody>
-									<td>Ultima Fecha de Actualización: <?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCambio)) ?></td>
+									<td><b>Artista Dueño: <?php foreach ($this->u->findById($Conte->result()[0]->idusuario) as $users) {
+														echo $users->UsuarioName;
+													} ?></b></td>
               </table>
 
               <?php if (empty($pregunta)){ ?>

@@ -56,7 +56,7 @@
 											if($this->session->userdata('is_logged_in'))
 											{ ?>
 											<div class="image">
-													<img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+													<img src="http://cotos-ever.net/blog/wp-content/uploads/2014/06/Depositphotos_18570799_s.jpg" alt="..."/>
 											</div>
 											<div class="content">
 													<div class="author">
