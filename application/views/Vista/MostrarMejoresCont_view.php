@@ -47,7 +47,7 @@
 	    	<div class="sidebar-wrapper">
 	            <div class="logo">
 	                <a href="http://localhost/Proyecto/content_ctrl/MostrarContenido" class="simple-text">
-	                    <i class="fa fa-eye"></i>
+	                    Evaluador de Arte
 	                </a>
 	            </div>
 							<div>
@@ -181,44 +181,45 @@
 	                                <h4 class="title" style="color:purple">Top 10 Mejores Calificadas</h4>
 	                            </div>
 	                            <div class="content table-responsive table-full-width">
-	                                <table class="table table-hover table-striped">
-	                                    <thead>
-																					<th></th>
-																					<th>Artista</th>
-																					<th>Nombre de Arte</th>
-																					<th>Categoría</th>
-	                                    </thead>
-	                                    <tbody>
-																				<?php
-																					foreach ($this->b->getMejoresArtes() as $row) {
-																				?>
-																					<tr onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'">
+																<table class="table">
+																		<tbody style="border:none; float:left">
+																			<?php
+																				$i = 1;
+																				foreach ($this->b->getMejoresArtes() as $row) {
+																			?>
+																			<div>
+																				<tr onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'">
 
-																						<td><img style="width: 150px;height: 150px;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
-																						src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
-																						<td><?php foreach ($this->u->findById($row->idusuario) as $users) {
-																						 					echo $users->UsuarioName;
-																										} ?></td>
-																						<td><?php echo $row->nombreCont ?></td>
-																						<td>
+																					<td rowspan="3" style="border:none; font-family:Roboto Slab; font-size:50px"><?php echo $i; $i=$i+1?>&nbsp<img style="width:450px; height:250px; margin-right:100; float:right;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
+																					src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
+																					<td style="border:none; font-family:Roboto Slab; font-size:30px"><?php foreach ($this->u->findById($row->idusuario) as $users) {
+																										echo $users->Nombre ." ". $users->Apellido ;
+																									} ?></td>
+																					<tr>
+																							<td style="border:none; font-family:Roboto Slab; font-size:30px;"><?php echo $row->nombreCont ?></td>
+																					</tr>
+																					<tr>
+																						<td style="border:none; font-family:Roboto Slab; font-size:30px;">
 																							<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
 																								if ($categories->idCategoria==$row->idcategoria){ ?>
 																									<?php echo $categories->NomCategoria; ?>
 																							<?php  } } ?>
 																						</td>
-																						<td>
-																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
-																						</td>
-																						<td>
-																							<a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
-																						</td>
 																					</tr>
-																				<?php
-																					}
-																				?>
+																					<!--<td>
+																						<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
+																					</td>
+																					<td>
+																						<a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
+																					</td>-->
+																				</tr>
+																			</div>
+																			<?php
+																				}
+																			?>
+																		</tbody>
+																</table>
 
-	                                    </tbody>
-	                                </table>
 	                            </div>
 	                        </div>
 	                    </div>
