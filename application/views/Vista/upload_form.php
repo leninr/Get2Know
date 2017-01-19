@@ -211,7 +211,7 @@
 
 		                                    </div>
 
-																									<input type="file" id="userfile" name="userfile" >
+																									<input type="file" id="userfile" name="userfile" style="display:none;">
 																									<label for="userfile" style = "purple" class="btn btn-info btn-fill pull-left">Seleccionar Elemento</label>
 
 																				<?= form_submit('','Crear Contenido',"class='btn btn-info btn-fill pull-right'")?>
