@@ -32,7 +32,7 @@
 
 </head>
 
-<body>
+<body style="height:auto; background-image: url('https://wallpaperscraft.com/image/space_sky_stars_79233_1920x1080.jpg')">
 
     <div class="container">
         <div class="row">
@@ -40,7 +40,7 @@
 						<br />
 						<br />
 						<br />
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-4 col-md-offset-4" style="margin-top: 150px;">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Sign In</h3>
@@ -64,7 +64,7 @@
 												<?php echo form_close(); ?>
                     </div>
                 </div>
-								<a href="<?php echo site_url('user_ctrl'); ?>" style="color:green">Registrarse</a>
+								<a href="<?php echo site_url('user_ctrl'); ?>" class="btn btn-success">Registrarse</a>
             </div>
         </div>
     </div>
