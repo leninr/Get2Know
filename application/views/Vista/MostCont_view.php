@@ -179,31 +179,30 @@
 	                                <h4 class="title" style="color:purple">Muro</h4>
 	                            </div>
 	                            <div class="content table-responsive table-full-width">
-	                                <table class="table table-hover table-striped">
-	                                    <thead>
-																					<th></th>
-																					<th>Artista</th>
-																					<th>Nombre de Arte</th>
-																					<th>Categoría</th>
-	                                    </thead>
-	                                    <tbody>
+	                                <table class="table">
+																			<tbody style="border:none; float:left">
 																				<?php
 																					foreach ($this->b->getalldata() as $row) {
 																				?>
+																				<div>
 																					<tr onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'">
 
-																						<td><img style="width: 150px;height: 150px;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
+																						<td rowspan="3" style="border:none;"><img style="width:450px; height:250px; margin-right:100; float:right;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
 																						src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
-																						<td><?php foreach ($this->u->findById($row->idusuario) as $users) {
+																						<td style="border:none;"><?php foreach ($this->u->findById($row->idusuario) as $users) {
 																						 					echo $users->UsuarioName;
 																										} ?></td>
-																						<td><?php echo $row->nombreCont ?></td>
-																						<td>
-																							<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
-																								if ($categories->idCategoria==$row->idcategoria){ ?>
-																									<?php echo $categories->NomCategoria; ?>
-																							<?php  } } ?>
-																						</td>
+																						<tr>
+																								<td style="border:none"><?php echo $row->nombreCont ?></td>
+																						</tr>
+																						<tr>
+																							<td style="border:none;">
+																								<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
+																									if ($categories->idCategoria==$row->idcategoria){ ?>
+																										<?php echo $categories->NomCategoria; ?>
+																								<?php  } } ?>
+																							</td>
+																						</tr>
 																						<!--<td>
 																							<a href="<?php echo site_url('content_ctrl/edit/'.$row->idcontent); ?>">Editar</a>
 																						</td>
@@ -211,10 +210,10 @@
 																							<a href="<?php echo site_url('content_ctrl/borrarContC/'.$row->idcontent); ?>" style="color:red">Eliminar</a>
 																						</td>-->
 																					</tr>
+																				</div>
 																				<?php
 																					}
 																				?>
-
 	                                    </tbody>
 	                                </table>
 	                            </div>
