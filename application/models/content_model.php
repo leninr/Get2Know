@@ -20,6 +20,12 @@ class content_model extends CI_Model{
 		return $query->result();
 	}
 
+	function getMejoresArtes(){
+
+		$query = $this->db->query("SELECT * FROM tblcontenido order by Calificación DESC LIMIT 10");
+		return $query->result();
+	}
+
 	function obtenerContUpdate($idCont){
 		$query = $this->db->get_where('tblcontenido',
 		array('idcontent' => $idCont));

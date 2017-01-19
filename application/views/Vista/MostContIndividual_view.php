@@ -86,7 +86,9 @@
 													<?= form_open("/user_ctrl/EditarUsuarioC/".$this->session->userdata('idusuario')); ?>
 													<button type="submit" class="btn btn-simple"> <i class="fa fa-gears"></i></button>
 													<?= form_close() ?>
-													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
+													<?= form_open("/content_ctrl/MostrarContMax/"); ?>
+													<button type="submit" class="btn btn-simple"> <i class="fa fa-trophy"></i></button>
+													<?= form_close() ?>
 
 											</div>
 									<?php } ?>
@@ -194,11 +196,12 @@
 		                            } ?></td>
 
 			                    <td><?php echo $Conte->result()[0]->nombreCont ?></td>
-			                    <td><?php echo $Conte->result()[0]->fechaCont ?></td>
+			                    <td><?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCont)) ?></td>
 			                    <td><?php echo $Conte->result()[0]->descripCont ?></td>
 			                    <td><?php echo $Conte->result()[0]->Calificación ?></td>
                       </tr>
                   </tbody>
+									<td>Ultima Fecha de Actualización: <?php echo date('F/d/Y',  strtotime($Conte->result()[0]->fechaCambio)) ?></td>
               </table>
 
               <?php if (empty($pregunta)){ ?>

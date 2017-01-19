@@ -86,7 +86,9 @@
 													<?= form_open("/user_ctrl/EditarUsuarioC/".$this->session->userdata('idusuario')); ?>
 													<button type="submit" class="btn btn-simple"> <i class="fa fa-gears"></i></button>
 													<?= form_close() ?>
-													<button href="#" class="btn btn-simple"><i class="fa fa-trophy"></i></button>
+													<?= form_open("/content_ctrl/MostrarContMax/"); ?>
+													<button type="submit" class="btn btn-simple"> <i class="fa fa-trophy"></i></button>
+													<?= form_close() ?>
 
 											</div>
 									<?php } ?>
@@ -185,13 +187,12 @@
 																					<div class="col-md-5">
 																							<div class="form-group">
 																								<label>Nombre Categoria</label>
-																								<?= form_input(array('name' => 'NomCategoria','placeholder' => 'Nombre Categoria')) ?>
+																								<?= form_input(array('name' => 'NomCategoria','class' => 'form-control','type' => 'text','placeholder' => 'Nombre Categoria')) ?>
 																							</div>
 																					</div>
 	                                    </div>
 
-
-																			<?= form_submit('','Crear Contenido')?>
+																			<?= form_submit('', 'Crear Categoría',"class='btn btn-info btn-fill pull-right'")?>
 	                                    <div class="clearfix"></div>
 	                                </form>
 	                            </div>
