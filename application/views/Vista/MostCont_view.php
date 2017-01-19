@@ -191,14 +191,14 @@
 
 																						<td rowspan="3" style="border:none;"><img style="width:450px; height:250px; margin-right:100; float:right;" onclick="window.location='<?php echo site_url("content_ctrl/MostrarContenidoIndividual/".$row->idcontent);?>'"
 																						src="<?php echo base_url('file/'.$row->Cont) ?>"></td>
-																						<td style="border:none;"><?php foreach ($this->u->findById($row->idusuario) as $users) {
-																						 					echo $users->UsuarioName;
+																						<td style="border:none; font-family:Roboto Slab; font-size:30px"><?php foreach ($this->u->findById($row->idusuario) as $users) {
+																						 					echo $users->Nombre ." ". $users->Apellido ;
 																										} ?></td>
 																						<tr>
-																								<td style="border:none"><?php echo $row->nombreCont ?></td>
+																								<td style="border:none; font-family:Roboto Slab; font-size:30px;"><?php echo $row->nombreCont ?></td>
 																						</tr>
 																						<tr>
-																							<td style="border:none;">
+																							<td style="border:none; font-family:Roboto Slab; font-size:30px;">
 																								<?php foreach ($this->c->obtenerCategoriaParaDropdownM() as $categories) {
 																									if ($categories->idCategoria==$row->idcategoria){ ?>
 																										<?php echo $categories->NomCategoria; ?>
